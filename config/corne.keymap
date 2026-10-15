@@ -112,6 +112,34 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        bluetooth_1: bluetooth_1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUETOOTH_1";
+            #binding-cells = <0>;
+            bindings = <&bt_1>, <&bt BT_DISC 1>;
+        };
+
+        bluetooth_2: bluetooth_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUETOOTH_2";
+            #binding-cells = <0>;
+            bindings = <&bt_2>, <&bt BT_DISC 2>;
+        };
+
+        bluetooth_3: bluetooth_3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUETOOTH_3";
+            #binding-cells = <0>;
+            bindings = <&bt_3>, <&bt BT_DISC 3>;
+        };
+
+        bluetooth_4: bluetooth_4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUETOOTH_4";
+            #binding-cells = <0>;
+            bindings = <&bt_4>, <&bt BT_DISC 4>;
+        };
     };
 
     keymap {
