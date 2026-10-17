@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "corne.dtsi"
+#include "corne_mau.dtsi"
 
 &default_transform {
     col-offset = <6>;
@@ -23,4 +23,22 @@
         , <&pro_micro 20 GPIO_ACTIVE_HIGH>
         , <&pro_micro 21 GPIO_ACTIVE_HIGH>
         ;
+};
+
+// This is the first step to configure the pointing device
+&pro_micro_i2c {
+    glidepoint: glidepoint@0 {
+        compatible = "cirque,pinnacle";
+        reg = <0x2a>;
+        status = "okay";
+        dr-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH)>;
+        sensitivity = "2x";
+        y-invert;
+    };
+};
+
+// This is the third step to configure the pointer
+&glidepoint_split {
+    // status = "okay";
+    device = <&glidepoint>;
 };

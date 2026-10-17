@@ -1,16 +1,19 @@
-if SHIELD_CORNE_LEFT
+if SHIELD_CORNE_MAU_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "Corne"
+    default "Mau Keyboard"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-if SHIELD_CORNE_LEFT || SHIELD_CORNE_RIGHT
+if SHIELD_CORNE_MAU_LEFT || SHIELD_CORNE_MAU_RIGHT
 
 config ZMK_SPLIT
+    default y
+
+config ZMK_POINTING
     default y
 
 if ZMK_DISPLAY

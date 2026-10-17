@@ -17,56 +17,48 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 0>;
-            label = "BT_0";
         };
 
         bt_1: bt_1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 1>;
-            label = "BT_1";
         };
 
         bt_2: bt_2 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 2>;
-            label = "BT_2";
         };
 
         bt_3: bt_3 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 3>;
-            label = "BT_3";
         };
 
         bt_4: bt_4 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&out OUT_BLE &bt BT_SEL 4>;
-            label = "BT_4";
         };
     };
 
     behaviors {
         bg: bg {
             compatible = "zmk,behavior-tap-dance";
-            label = "BG";
             #binding-cells = <0>;
             bindings = <&none>, <&bootloader>;
         };
 
         rg: rg {
             compatible = "zmk,behavior-tap-dance";
-            label = "RG";
             #binding-cells = <0>;
             bindings = <&none>, <&sys_reset>;
         };
 
         home_row_mod: home_row_mod {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_MOD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -78,7 +70,6 @@
 
         home_row_layer: home_row_layer {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_LAYER";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
@@ -90,7 +81,6 @@
 
         layer_tap_quick: layer_tap_quick {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_QUICK";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
@@ -101,14 +91,12 @@
 
         bluetooth_0: bluetooth_0 {
             compatible = "zmk,behavior-tap-dance";
-            label = "BLUETOOTH_0";
             #binding-cells = <0>;
             bindings = <&bt_0>, <&bt BT_DISC 0>;
         };
 
         caps_lock_word: caps_lock_word {
             compatible = "zmk,behavior-mod-morph";
-            label = "CAPS_LOCK_WORD";
             bindings = <&kp CAPS>, <&caps_word>;
 
             #binding-cells = <0>;
@@ -117,28 +105,24 @@
 
         bluetooth_1: bluetooth_1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "BLUETOOTH_1";
             #binding-cells = <0>;
             bindings = <&bt_1>, <&bt BT_DISC 1>;
         };
 
         bluetooth_2: bluetooth_2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "BLUETOOTH_2";
             #binding-cells = <0>;
             bindings = <&bt_2>, <&bt BT_DISC 2>;
         };
 
         bluetooth_3: bluetooth_3 {
             compatible = "zmk,behavior-tap-dance";
-            label = "BLUETOOTH_3";
             #binding-cells = <0>;
             bindings = <&bt_3>, <&bt BT_DISC 3>;
         };
 
         bluetooth_4: bluetooth_4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "BLUETOOTH_4";
             #binding-cells = <0>;
             bindings = <&bt_4>, <&bt BT_DISC 4>;
         };
@@ -148,18 +132,13 @@
         compatible = "zmk,keymap";
 
         Alpha {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             bindings = <
 &none            &kp Q                 &kp W                 &kp E                      &kp R                     &kp T      &kp Y                         &kp U                     &kp I                      &kp O                        &kp P                    &kp MINUS
 &caps_lock_word  &home_row_mod LGUI A  &home_row_mod LALT S  &home_row_mod LCTRL D      &home_row_mod LSHFT F     &kp G      &kp H                         &home_row_mod RSHFT J     &home_row_mod RCTRL K      &home_row_mod LALT L         &home_row_mod RGUI SEMI  &kp SQT
 &none            &home_row_layer 3 Z   &home_row_mod RALT X  &kp C                      &kp V                     &kp B      &kp N                         &kp M                     &kp COMMA                  &home_row_mod RIGHT_ALT DOT  &home_row_layer 3 MINUS  &none
                                                              &layer_tap_quick 2 ESCAPE  &layer_tap_quick 1 SPACE  &kp TAB    &layer_tap_quick 6 BACKSPACE  &layer_tap_quick 5 ENTER  &layer_tap_quick 7 DELETE
             >;
+            display-name="Alpha";
         };
 
         Nav {
@@ -169,6 +148,7 @@
 &none  &none     &kp RALT  &none      &none      &none    &none          &none        &none           &none          &none       &none
                            &none      &none      &none    &kp BACKSPACE  &kp RET      &kp DELETE
             >;
+            display-name="Nav";
         };
 
         Media {
@@ -178,6 +158,7 @@
 &none  &none     &kp RALT  &none      &none      &none    &bluetooth_0  &bluetooth_1      &bluetooth_2     &bluetooth_3  &bluetooth_4  &none
                            &none      &none      &none    &kp C_STOP    &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
+            display-name="Media";
         };
 
         Mouse {
@@ -187,6 +168,7 @@
 &none  &none     &mo 4     &mkp MB5   &mkp MB4   &none       &none  &none           &none           &none            &none  &none
                            &mkp MB3   &mkp MB1   &mkp MB2    &none  &none           &none
             >;
+            display-name="Mouse";
         };
 
         Scroll {
@@ -196,6 +178,7 @@
 &none  &none     &none     &mkp MB5   &mkp MB4   &none       &none  &none           &none           &none            &none  &none
                            &mkp MB3   &mkp MB1   &mkp MB2    &none  &none           &none
             >;
+            display-name="Scroll";
         };
 
         Numbers {
@@ -205,6 +188,7 @@
 &none  &kp NUBS  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp GRAVE    &none          &none      &kp COMMA   &kp DOT   &kp FSLH  &none
                                &kp EQUAL     &kp N0        &kp MINUS    &kp BACKSPACE  &kp ENTER  &kp DELETE
             >;
+            display-name="Nums";
         };
 
         Symbols {
@@ -214,6 +198,7 @@
 &none  &kp NUBS       &kp LS(NUBS)      &kp LEFT_BRACE        &kp RIGHT_BRACE        &none    &none  &none      &none      &kp RALT  &none     &none
                                         &none                 &none                  &none    &none  &none      &none
             >;
+            display-name="Syms";
         };
 
         Fun {
@@ -223,12 +208,7 @@
 &none  &kp F10  &kp F1  &kp F2      &kp F3  &none              &none  &none      &none      &kp RALT  &none     &none
                         &kp C_MENU  &none   &none              &none  &none      &none
             >;
+            display-name="Funcs";
         };
-    };
-
-    glidepoint_listener {
-        compatible = "zmk,input-listener";
-        device = <&glidepoint>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
     };
 };
