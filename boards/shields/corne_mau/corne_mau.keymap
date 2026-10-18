@@ -9,7 +9,20 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+    input_processors {
+        zip_click_to_right_click_mapper: zip_click_to_right_click_mapper {
+            compatible = "zmk,input-processor-code-mapper";
+            #input-processor-cells = <0>;
+            type = <INPUT_EV_KEY>;
+            map = <INPUT_BTN_0 INPUT_BTN_1>;
+        };
+    };
+};
 
 / {
     macros {
@@ -135,7 +148,7 @@
             bindings = <
 &none            &kp Q                 &kp W                 &kp E                      &kp R                     &kp T      &kp Y                         &kp U                     &kp I                      &kp O                        &kp P                    &kp MINUS
 &caps_lock_word  &home_row_mod LGUI A  &home_row_mod LALT S  &home_row_mod LCTRL D      &home_row_mod LSHFT F     &kp G      &kp H                         &home_row_mod RSHFT J     &home_row_mod RCTRL K      &home_row_mod LALT L         &home_row_mod RGUI SEMI  &kp SQT
-&none            &home_row_layer 3 Z   &home_row_mod RALT X  &kp C                      &kp V                     &kp B      &kp N                         &kp M                     &kp COMMA                  &home_row_mod RIGHT_ALT DOT  &home_row_layer 3 MINUS  &none
+&none            &home_row_layer 3 Z   &home_row_mod RALT X  &kp C                      &kp V                     &kp B      &kp N                         &kp M                     &kp COMMA                  &home_row_mod RIGHT_ALT DOT  &home_row_layer 3 FSLH   &none
                                                              &layer_tap_quick 2 ESCAPE  &layer_tap_quick 1 SPACE  &kp TAB    &layer_tap_quick 6 BACKSPACE  &layer_tap_quick 5 ENTER  &layer_tap_quick 7 DELETE
             >;
             display-name="Alpha";
@@ -210,5 +223,15 @@
             >;
             display-name="Funcs";
         };
+    };
+};
+
+&glidepoint_listener {
+    scroller {
+        layers = <1 4>;
+        input-processors = <&zip_xy_to_scroll_mapper>,
+                           <&zip_scroll_transform(INPUT_TRANSFORM_Y_INVERT)>,
+                           <&zip_scroll_scaler 1 4>,
+                           <&zip_click_to_right_click_mapper>;
     };
 };
