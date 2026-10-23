@@ -102,18 +102,18 @@
             require-prior-idle-ms = <0>;
         };
 
-        bluetooth_0: bluetooth_0 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            bindings = <&bt_0>, <&bt BT_DISC 0>;
-        };
-
         caps_lock_word: caps_lock_word {
             compatible = "zmk,behavior-mod-morph";
             bindings = <&kp CAPS>, <&caps_word>;
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        bluetooth_0: bluetooth_0 {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            bindings = <&bt_0>, <&bt BT_DISC 0>;
         };
 
         bluetooth_1: bluetooth_1 {
