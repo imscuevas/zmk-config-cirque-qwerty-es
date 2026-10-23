@@ -25,6 +25,11 @@
         ;
 };
 
+// Disable unused OLED on right half
+&oled {
+    status = "disabled";
+};
+
 // This is the first step to configure the pointing device
 &pro_micro_i2c {
     glidepoint: glidepoint@0 {
@@ -39,6 +44,6 @@
 
 // This is the third step to configure the pointer
 &glidepoint_split {
-    // status = "okay";
+    status = "okay";
     device = <&glidepoint>;
 };
